@@ -1,0 +1,40 @@
+
+<p>it works!! </p>
+
+
+<ul>
+  <% postList.forEach((post) => { %>
+
+    <li> <%= post.ownerName %> : <%=post.content %> </li>
+
+  <%  }); %>
+</ul>
+
+
+
+
+
+        <form action="/dashboard" method="post">
+
+            <fieldset>
+            <h2>Add Post </h2>
+
+
+             <label for="content-input">Assignment Title: </label>
+             <input id="contentinput" type="text" name="postContent">
+             <br>
+
+             <label for="content-input">Assignment Title: </label>
+             <input id="contentinput" type="text" name="postContent">
+             <br>
+
+
+            <div class="form-group">
+              <label for="date-assigned-input">Date Assigned:</label>
+              <input id="date-assigned-input" class="form-control input-lg" type="date" name="dateAssigned">
+            </div>
+
+            <div class="form-group">
+              <label for="date-due-input">Date Due:</label>
+              <input id="date-due-input" class="form-control input-lg" type="date" name="dateDue">
+            </div>
