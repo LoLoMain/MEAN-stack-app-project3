@@ -6,11 +6,15 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
+const session      = require('express-session');
+const passport     = require('passport');
 
-                            // database name
-mongoose.connect('mongodb://localhost/school-dojo');
-                            //          |
-                            // use school-dojo
+require('dotenv').config();
+
+require('./config/passport-config');
+                            // see .env
+mongoose.connect(process.env.MONGODB_URI);
+
 
 const app = express();
 
@@ -32,8 +36,26 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
-//passport middlewares needed
+app.use(session({
+  secret: "school-dojoappsecretstuff",
+  resave: true,
+  saveUninitialized: true
+}));
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Middleware to create the "currentUser" variable
+app.use((req,res,next)=>{
+  //Check if the user IS logged in
+  if(req.user){
+    res.locals.currentUser = req.user;
+  }
+  next();
+});
+
 //cors middlewares needed
+
 // END MIDDLEWARES ----------------------------------------------------
 
 // ROUTES ------------------------------------------------------------
@@ -42,6 +64,9 @@ app.use('/', index);
 
 const dashboardRoutes = require('./routes/user-routes');
 app.use('/', dashboardRoutes);
+
+const authRoutes = require('./routes/auth-routes');
+app.use('/', authRoutes);
 
 //END ROUTES ----------------------------------------------------------
 

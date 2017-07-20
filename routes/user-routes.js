@@ -5,17 +5,14 @@ const PostModel = require ('../models/post-model.js');
 
 
 
-
+//Find all posts in D
 router.get('/dashboard', (req, res, next) => {
   PostModel.find((err, postList) => {
     if (err){
-      next(err);
+      res.json(err);
       return;
     }
-
-    res.locals.postList = postList;
-    
-  res.render('dashboard.ejs');
+  res.json(postList);
   });
 });
 
