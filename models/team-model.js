@@ -7,14 +7,12 @@ const teamSchema = new Schema({
       type: String,
       required: [true]
     },
-    userIds: {
-      type: Array,
-      required: [true],
-    }
- },
+    userIds:
+      [ { type: Schema.Types.ObjectId}],
+    },
  {
   timestamps: true
- }
+}
 );
 
 

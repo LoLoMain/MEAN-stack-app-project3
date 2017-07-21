@@ -8,6 +8,7 @@ const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 const session      = require('express-session');
 const passport     = require('passport');
+const cors         = require('cors');
 
 require('dotenv').config();
 
@@ -45,6 +46,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:4200']
+}));
+
+
 // Middleware to create the "currentUser" variable
 app.use((req,res,next)=>{
   //Check if the user IS logged in
@@ -62,11 +69,11 @@ app.use((req,res,next)=>{
 const index = require('./routes/index');
 app.use('/', index);
 
-const dashboardRoutes = require('./routes/user-routes');
-app.use('/', dashboardRoutes);
-
 const authRoutes = require('./routes/auth-routes');
 app.use('/', authRoutes);
+
+// const dashboardRoutes = require('./routes/user-routes');
+// app.use('/', dashboardRoutes);
 
 //END ROUTES ----------------------------------------------------------
 

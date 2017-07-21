@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const passport  = require('passport');
 const router  = express.Router();
 
 const UserModel = require ('../models/user-model.js');
@@ -52,7 +53,7 @@ router.post('/api/signup', (req,res,next)=>{
 
               //Remove encryptedPassword before sending
               //(not removing from DB - just the object)
-              
+
               theUser.encryptedPassword = undefined;
 
               //Send User Info to FrontEnd
@@ -61,12 +62,61 @@ router.post('/api/signup', (req,res,next)=>{
           }); //close theUser.save()
        }
      ); //close UserModel.findOne()
-}); //close router.post
+}); //close router.post('/signup')
+//-----------------------------------------------------------
 
+// POST Sign In
+router.post('/api/login', (req, res, next)=> {
+  const authenticateFunction =
+    passport.authenticate('local', (err, theUser, passportErrorMessage)=>{
+      //Errors would not allow to determine if login was Successful or Failure
+      if (err){
+        res.status(500).json({ message: 'Log In Error Unknown'});
+        return;
+      }
+      //Log In Failed for sure
+      if(!theUser){            //passportErrorMessage contains feedback messages from LocalStrategy (passport config)
+        res.status(401).json(passportErrorMessage);
+        return;
+      }
+      //Log In Successful
+      req.login(theUser, (err)=>{
+        if(err){
+          res.status(500).json({ message: 'Log In Sesson Save Error'});
+          return;
+        }
+       //Remove encryptedPassword before sending
+        theUser.encryptedPassword = undefined;
 
-// POST login
+        //It worked. Send the user's info (theUser = object) to the client
+        res.status(200).json(theUser);
+      });
+    });
+
+    authenticateFunction(req, res, next);
+});
+//-----------------------------------------------------------
+
 // POST logout
+router.post('/api/logout', (req, res, next)=>{
+  //req.logout() is a passport function
+  req.logout();
+  res.status(200).json({ message: 'Logged out successfully!'});
+});
+
 // GET check login
+//
+router.get('/api/checklogin', (req, res, next)=>{
+  if(!req.user){
+    res.status(401).json({message: 'No one is logged in!'});
+    return;
+  }
+
+  //Remove encryptedPassword before sending
+  req.user.encryptedPassword = undefined;
+  //send the user's info
+  res.status(200).json(req.user);
+});
 
 
 

@@ -22,20 +22,21 @@ const userSchema = new Schema({
   },
   encryptedPassword: {
     type: String,
-    required: [true, 'Please provide a password']
+    required: true
   },
   teamId: {
-    type: Number,
+    type: Schema.Types.ObjectId,
+    required: true
 
   },
-  //use class id
-  class: [ClassModel.schema],
-  posts: [PostModel.schema]
+
+  class: Schema.Types.ObjectId,
+  posts: [ { type: Schema.Types.ObjectId}],
 
 },
 {
   timestamps: true
-  // timestamp creates two additional fields: "createdAt" & "updatedAt"
+  // timestamp creates: "createdAt" & "updatedAt"
  }
 
 );

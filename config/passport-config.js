@@ -1,9 +1,8 @@
 const passport       = require('passport');
-const bcrypt        = require ('bcrypt');
+const bcrypt         = require ('bcrypt');
 const LocalStrategy  = require ('passport-local').Strategy;
 
-const UserModel = require('../models/user-model');
-
+const UserModel      = require('../models/user-model');
 
 
 //Save user's ID session
