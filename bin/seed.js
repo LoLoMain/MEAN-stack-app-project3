@@ -59,7 +59,8 @@ UserModel.create(
   userListArray,          //1st Argument -> array of users info objects
   (err, usersResults) =>{  //2nd Argument -> callback!
     if (err){
-      console.log('No stuff for you! DataBase Error.');
+      console.log('No Users for you! DataBase Error.');
+      console.log(err);
       return;  //early return
     }
 
@@ -67,8 +68,10 @@ UserModel.create(
       console.log('New User!!! ' + user.firstName);
       });
   }
-);
-//create new instances and save using teacher objects
+); //create new instances and save using teacher objects
+
+
+
 
 var idArray = [];
 // Team Seed Info ------------------------
@@ -84,11 +87,11 @@ const TeamModel = require('../models/team-model.js');
 
 const teamListArray = [
   {teamName: 'Panthers',
-  userIds: []},
+   userIds: []},
   {teamName: 'Jaguars',
-  userIds: []},
+   userIds: []},
   {teamName: 'Cheetas',
-  userIds: []}
+   userIds: []}
 ];
 //create team objects
 
@@ -107,7 +110,6 @@ const teamListArray = [
 
   });
 //populate team objects with teacher ids
-
 
 
 TeamModel.create(

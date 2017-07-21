@@ -26,7 +26,6 @@ const userSchema = new Schema({
   },
   teamId: {
     type: Schema.Types.ObjectId,
-    required: true
 
   },
 
