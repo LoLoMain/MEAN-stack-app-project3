@@ -6,7 +6,7 @@ const router  = express.Router();
 const UserModel = require ('../models/user-model.js');
 
 
-//POST signup
+//POST SIGN UP
 router.post('/api/signup', (req,res,next)=>{
      //No Email/Password Required
      if(!req.body.signupEmail || !req.body.signupPassword){
@@ -65,7 +65,7 @@ router.post('/api/signup', (req,res,next)=>{
 }); //close router.post('/signup')
 //-----------------------------------------------------------
 
-// POST Sign In
+// POST LOG IN
 router.post('/api/login', (req, res, next)=> {
   const authenticateFunction =
     passport.authenticate('local', (err, theUser, passportErrorMessage)=>{
@@ -97,15 +97,17 @@ router.post('/api/login', (req, res, next)=> {
 });
 //-----------------------------------------------------------
 
-// POST logout
+// POST Log OUT
 router.post('/api/logout', (req, res, next)=>{
   //req.logout() is a passport function
   req.logout();
   res.status(200).json({ message: 'Logged out successfully!'});
 });
+//---------------------------------------------------------------
 
-// GET check login
-//
+
+
+// GET Check if a user is LOGGED IN
 router.get('/api/checklogin', (req, res, next)=>{
   if(!req.user){
     res.status(401).json({message: 'No one is logged in!'});
@@ -117,7 +119,6 @@ router.get('/api/checklogin', (req, res, next)=>{
   //send the user's info
   res.status(200).json(req.user);
 });
-
 
 
 

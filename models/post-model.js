@@ -10,15 +10,11 @@ const postSchema = new Schema({
     photoUrl:{
       type: String
     },
-    ownerName: {
-      type: String
+    ownerId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'//"ref" is the string name of the model that the ID refers to
     },
-    owner: {
-        type: Schema.Types.ObjectId
-    },
-    teamId : {
-       type: Schema.Types.ObjectId
-    }
  },
  {
   timestamps: true

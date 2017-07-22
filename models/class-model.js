@@ -10,7 +10,7 @@ const classSchema = new Schema({
         type:Array
     },
     points: {
-        type: Array
+        type: Number
     }
   });
 

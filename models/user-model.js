@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
-// Should ClassModel be a part of User Schema?
+
 const ClassModel = require ('./class-model.js');
-const PostModel = require ('./post-model.js');
+
 
 const Schema = mongoose.Schema;
-
 const userSchema = new Schema({
 
   firstName: {
@@ -26,12 +25,8 @@ const userSchema = new Schema({
   },
   teamId: {
     type: Schema.Types.ObjectId,
-
   },
-
-  class: Schema.Types.ObjectId,
-  posts: [ { type: Schema.Types.ObjectId}],
-
+  class: ClassModel.schema
 },
 {
   timestamps: true
