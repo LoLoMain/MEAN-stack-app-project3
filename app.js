@@ -72,6 +72,9 @@ app.use('/', index);
 const authRoutes = require('./routes/auth-routes');
 app.use('/', authRoutes);
 
+const postRoutes = require('./routes/post-routes');
+app.use('/', postRoutes);
+
 // const dashboardRoutes = require('./routes/user-routes');
 // app.use('/', dashboardRoutes);
 
