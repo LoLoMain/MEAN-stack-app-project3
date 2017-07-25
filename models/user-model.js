@@ -6,7 +6,10 @@ const ClassModel = require ('./class-model.js');
 
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
-
+  title: {
+    type: String,
+    required: true
+  },
   firstName: {
     type: String,
     required: true

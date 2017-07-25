@@ -32,6 +32,7 @@ router.post('/api/signup', (req,res,next)=>{
           const scrambledPassword = bcrypt.hashSync(req.body.signupPassword, salt);
 
           const theUser = new UserModel ({
+            title: req.body.signupTitle,
             firstName: req.body.signupFirstName,
             lastName: req.body.signupLastName,
             email: req.body.signupEmail,

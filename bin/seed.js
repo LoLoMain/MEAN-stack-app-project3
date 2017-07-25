@@ -165,7 +165,7 @@ const classListArray =
   }
 ;
 //Class Seed Info ------------------------
-UserModel.findOne({"_id": "597287a21223351b585f06d8"},
+UserModel.findOne({"_id": "597372137fc72a2afe0f40bd"},
   (err, oneTeacher) => {
     let updatedTeacher = oneTeacher;
     updatedTeacher.class = classListArray;

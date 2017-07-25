@@ -7,7 +7,7 @@ const postSchema = new Schema({
       type: String,
       required: true
     },
-    photoUrl:{
+    photo:{
       type: String
     },
     ownerId: {
@@ -15,6 +15,10 @@ const postSchema = new Schema({
         required: true,
         ref: 'User'//"ref" is the string name of the model that the ID refers to
     },
+    likes:{
+      type: Number,
+      default: 0
+    }
  },
  {
   timestamps: true

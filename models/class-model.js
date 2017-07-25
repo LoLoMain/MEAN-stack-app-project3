@@ -9,7 +9,16 @@ const classSchema = new Schema({
     students: {
         type:Array
     },
-    points: {
+    teamworkPoints: {
+        type: Number
+    },
+    gradePoints: {
+        type: Number
+    },
+    readingPoints: {
+        type: Number
+    },
+    prepPoints: {
         type: Number
     }
   });

@@ -3,61 +3,55 @@ const express = require('express');
 const router  = express.Router();
 
 const ClassModel = require ('../models/class-model');
+const TeamModel = require ('../models/team-model');
 
-// POST add Points
-router.post('/api/class', (req, res, next)=>{
+
+// PATCH add Points to a CLASS (individual)
+router.patch('/api/classpoints/:id', (req, res, next)=>{
  if(!req.user){
-   res.status(401).json({ message: 'You MUST log in to add points to your team.'});
+   res.status(401).json({ message: 'You MUST log in to add points to your class.'});
+   return;
  }
+ const classId = req.params.id;
+ const pointsUpdates = {
+   teamworkPoints: req.body.teamPoints,
+   gradePoints: req.body.gradePoints,
+   readingPoints: req.body.readingPoints,
+   prepPoints: req.body.prepPoints
+ };
+ console.log('🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪');
+ console.log(classId);
+ console.log(pointsUpdates);
 
-  *const newPost = new PostModel({
-    content: req.body.postContent,
-    owner: req.body.postOwner,
-    user: req.user._id
-  });
+ ClassModel.findByIdAndUpdate(classId, pointsUpdates, (err,classResult)=>{
+   if (err){
+     return next(err);
+   }
+   res.status(200).json(classResult);
+ });
+});
 
-  newPost.save((err)=> {
-    if(err && newPost.errors === undefined){
-      res.status(500).json ({ message: 'Post Not Saved' });
-      return;
+
+
+
+//PATCH  update TEAM total Points
+router.patch('/api/teampoints/:id',(req, res, next)=>{
+  if(!req.user){
+    res.status(401).json({ message: 'Log in to add points to your team please'});
+    return;
+  }
+const teamId = req.params.id;
+const teamPointsUpdates = {
+  teamPoints: req.body.teamTotal };
+
+  TeamModel.findByIdAndUpdate(teamId, teamPointsUpdates, (err, teamResult) => {
+    if (err){
+      return next(err);
     }
-    //validation error
-    if(err && newPost.errors) {
-      res.status(400).json({
-        *content: req.body.postContent,
-        owner: req.body.postOwner,
-        user: req.user._id
-      });
-      return;
-    }
-    //Succcesful Post created!
-    res.status(200).json(newPost);
+
+    res.status(200).json(teamResult);
 
   });
 });
-//-------------------------------------------
-
-
-// GET Show ALL Posts
-router.get('/api/posts', (req, res, next)=>{
-  if(!req.user){
-    res.status(401).json({ message: 'Log in to view posts please'});
-    return;
-  }
-
-*// add teamId projection?
-  PostModel
-  .find()
-  .populate('Post', {encryptedPassword: 0}) // retreive all the info of the owners(except encryptedPassword), possible due to the 'ref' in the camel model
-
-  .exec((err, postList)=>{
-    if (err){
-      res.status(500).json({ message: 'Unable to find Posts'});
-      return;
-    }
-    res.status(200).json(postList);
-  });
-}); // close router.get
-
 
 module.exports = router;

@@ -9,6 +9,9 @@ const teamSchema = new Schema({
     },
     userIds:
       [ { type: Schema.Types.ObjectId}],
+    teamPoints: {
+      type: Number
+    }
     },
  {
   timestamps: true
