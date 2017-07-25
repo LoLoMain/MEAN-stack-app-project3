@@ -10,16 +10,20 @@ const classSchema = new Schema({
         type:Array
     },
     teamworkPoints: {
-        type: Number
+        type: Number,
+        default: 0
     },
     gradePoints: {
-        type: Number
+        type: Number,
+        default: 0
     },
     readingPoints: {
-        type: Number
+        type: Number,
+        default: 0
     },
     prepPoints: {
-        type: Number
+        type: Number,
+        default: 0
     }
   });
 

@@ -12,47 +12,54 @@ mongoose.connect('mongodb://localhost/school-dojo');
 
 // User Seed Info ------------------------
 const UserModel = require('../models/user-model.js');
+
+//  const userListArray = [
+//    {
+//   "_id": ObjectId("5977b45194d895d90a91b1e2"),
+//   "updatedAt": ISODate("2017-07-25T21:12:49.688Z"),
+//   "createdAt": ISODate("2017-07-25T21:12:49.688Z"),
+//   "title": "Mr.",
+//   "firstName": "John",
+//   "lastName": "Johnson",
+//   "email": "johnjohnson@browardschools.com",
+//   "encryptedPassword": "$2a$10$ibRbFeeyuezfqD1BaqPbAOpuV83.6Qn4Ru7amK6kRfcdb00j3ts..",
+//   "__v": 0
+// },
+// {
+//   "_id": ObjectId("5977b4ad94d895d90a91b1e3"),
+//   "updatedAt": ISODate("2017-07-25T21:14:21.560Z"),
+//   "createdAt": ISODate("2017-07-25T21:14:21.560Z"),
+//   "title": "Mrs.",
+//   "firstName": "Sue",
+//   "lastName": "Smith",
+//   "email": "suesmith@browardschools.com",
+//   "encryptedPassword": "$2a$10$NwJiqYkDpK7jagP/sM2.UOXb7a.q3Ij9wlOrK9hz/fa4fkrRd1xCW",
+//   "__v": 0
+// },
+// {
+//   "_id": ObjectId("5977b4fd94d895d90a91b1e4"),
+//   "updatedAt": ISODate("2017-07-25T21:15:41.109Z"),
+//   "createdAt": ISODate("2017-07-25T21:15:41.109Z"),
+//   "title": "Ms.",
+//   "firstName": "Belinda",
+//   "lastName": "Brown",
+//   "email": "belindabrown@browardschools.com",
+//   "encryptedPassword": "$2a$10$DzIN3VCoXgm63HTD4vip/OiDkUA4HT11LPeburhw4Pb78RGktRtHu",
+//   "__v": 0
+// },
+// {
+//   "_id": ObjectId("5977b52394d895d90a91b1e5"),
+//   "updatedAt": ISODate("2017-07-25T21:16:19.849Z"),
+//   "createdAt": ISODate("2017-07-25T21:16:19.849Z"),
+//   "title": "Mr.",
+//   "firstName": "William",
+//   "lastName": "Wilson",
+//   "email": "williamwilson@browardschools.com",
+//   "encryptedPassword": "$2a$10$zZjYiDYnja8jlQf.Mh9MzeGWCcNCDy91JLIY0objFkC3A.LmEhGZ.",
+//   "__v": 0
+// }
 //
-// const userListArray = [
-//   { firstName: 'Sally',
-//     lastName: 'Hernandez',
-//     email: 'sallyhernandez@browardschools.com',
-//     encryptedPassword: 'abc123',
-//
-//
-//   },
-//   { firstName: 'Bob',
-//     lastName: 'Smith',
-//     email: 'bobsmith@browardschools.com',
-//     encryptedPassword: 'abc123',
-//
-//   },
-//   { firstName: 'Mike',
-//     lastName: 'Jones',
-//     email: 'mikejones@browardschools.com',
-//     encryptedPassword: 'abc123',
-//
-//   },
-//   { firstName: 'Brenda',
-//     lastName: 'Matos',
-//     email: 'brendamatos@browardschools.com',
-//     encryptedPassword: 'abc123',
-//
-//   },
-//   { firstName: 'Ethan',
-//     lastName: 'Martinez',
-//     email: 'ethanmartinez@browardschools.com',
-//     encryptedPassword: 'abc123',
-//
-//   },
-//   { firstName: 'Jessica',
-//     lastName: 'Brown',
-//     email: 'jessicabrown@browardschools.com',
-//     encryptedPassword: 'abc123',
-//
-//   },
-//
-// ];
+//  ];
 // //create teacher objects
 //
 // UserModel.create(
@@ -72,10 +79,10 @@ const UserModel = require('../models/user-model.js');
 //
 //
 
-//
+//NEW TEAMS!
 const TeamModel = require('../models/team-model.js');
-// var idArray = [];
-// // Team Seed Info ------------------------
+var idArray = [];
+// Team Seed Info ------------------------
 // UserModel.find((err, results) => {
 //   results.forEach((teachers)=> {
 //     idArray.push(teachers._id);
@@ -84,8 +91,6 @@ const TeamModel = require('../models/team-model.js');
 //     {teamName: 'Panthers',
 //      userIds: []},
 //     {teamName: 'Jaguars',
-//      userIds: []},
-//     {teamName: 'Cheetas',
 //      userIds: []}
 //   ];
 //   //create team objects
@@ -98,14 +103,14 @@ const TeamModel = require('../models/team-model.js');
 //
 //       count += 1;
 //       index += 1;
-//       if ( count % 3 === 0){
+//       if ( count % 2 === 0){
 //         index = 0;
 //       }
 //
 //     });
-//   //populate team objects with teacher ids
-//
-//
+  //populate team objects with teacher ids
+
+
 //   TeamModel.create(
 //     teamListArray,          //1st Argument -> array of team info objects
 //     (err, teamResults) =>{  //2nd Argument -> callback!
@@ -128,44 +133,56 @@ const ClassModel = require('../models/class-model.js');
 
 const classListArray =
   {
-  gradeLevel: '4',
+  gradeLevel: '5',
   students: [
     {
-     name: 'Jerrold Larocca',
+     name: 'Steven McCurray',
      picture: 'https://cdn1.iconfinder.com/data/icons/man-icon-set/100/man_icon-10-512.png'
     },
     {
-     name: 'Joshua Thomas',
+     name: 'Johnny Black',
      picture: 'https://cdn1.iconfinder.com/data/icons/man-icon-set/100/man_icon-10-512.png'
    },
    {
-    name: 'Adrian Llerena',
+    name: 'Clyde Bonnie',
     picture: 'https://cdn1.iconfinder.com/data/icons/man-icon-set/100/man_icon-10-512.png'
    },
    {
-    name: 'Coralie Wenrich',
+    name: 'Hartey Davidson',
     picture: 'https://cdn3.iconfinder.com/data/icons/avatars-with-different-clothes-and-hairstyles/512/Avatar_female_person_user_woman_girl_ponytail_shirt_icon-512.png'
    },
    {
-    name: 'Craig Flanary',
+    name: 'Veronica Mars',
+    picture: 'https://cdn3.iconfinder.com/data/icons/avatars-with-different-clothes-and-hairstyles/512/Avatar_female_person_user_woman_girl_ponytail_shirt_icon-512.png'
+   },
+   {
+    name: 'Austin Powers',
     picture: 'https://cdn1.iconfinder.com/data/icons/man-icon-set/100/man_icon-10-512.png'
    },
    {
-    name: 'Rebecca Echavarria',
+    name: 'Coby Bryan',
     picture: 'https://cdn3.iconfinder.com/data/icons/avatars-with-different-clothes-and-hairstyles/512/Avatar_female_person_user_woman_girl_ponytail_shirt_icon-512.png'
    },
    {
-    name: 'Kanesha Simonsen',
+    name: 'Celina Dionne',
     picture: 'https://cdn3.iconfinder.com/data/icons/avatars-with-different-clothes-and-hairstyles/512/Avatar_female_person_user_woman_girl_ponytail_shirt_icon-512.png'
    },
+   {
+    name: 'Anne Powers',
+    picture: 'https://cdn3.iconfinder.com/data/icons/avatars-with-different-clothes-and-hairstyles/512/Avatar_female_person_user_woman_girl_ponytail_shirt_icon-512.png'
+  },
+  {
+   name: 'Barbara Waters',
+   picture: 'https://cdn3.iconfinder.com/data/icons/avatars-with-different-clothes-and-hairstyles/512/Avatar_female_person_user_woman_girl_ponytail_shirt_icon-512.png'
+  }
+
 
    ],
 
-   points: 0
   }
 ;
 //Class Seed Info ------------------------
-UserModel.findOne({"_id": "597372137fc72a2afe0f40bd"},
+UserModel.findOne({"_id": "5977b52394d895d90a91b1e5"},
   (err, oneTeacher) => {
     let updatedTeacher = oneTeacher;
     updatedTeacher.class = classListArray;
@@ -176,19 +193,19 @@ UserModel.findOne({"_id": "597372137fc72a2afe0f40bd"},
 
   });
 
-// ClassModel.create(
-//   classListArray,          //1st Argument -> array of class info objects
-//   (err, classResults) =>{  //2nd Argument -> callback!
-//     if (err){
-//       console.log('No stuff for you! DataBase Error.');
-//       return;  //early return
-//     }
-//
-//     classResults.forEach((oneClass)=>{
-//       console.log('New Class!!!! ' + oneClass.student.name);
-//       });
-//   }
-// );
+ClassModel.create(
+  classListArray,          //1st Argument -> array of class info objects
+  (err, classResults) =>{  //2nd Argument -> callback!
+    if (err){
+      console.log('No stuff for you! DataBase Error.');
+      return;  //early return
+    }
+
+    // classResults.forEach((oneClass)=>{
+    //   console.log('New Class!!!! ' + oneClass.student.name);
+    //   });
+  }
+);
 
 
 

@@ -26,8 +26,9 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  teamId: {
+  team: {
     type: Schema.Types.ObjectId,
+    ref: 'Team'
   },
   class: ClassModel.schema
 },

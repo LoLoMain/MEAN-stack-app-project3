@@ -41,6 +41,7 @@ router.post('/api/signup', (req,res,next)=>{
 
           theUser.save((err)=>{
             if(err){
+            console.log(err);
             res.status(500).json({message: 'Sign Up Failed'});
             return;
             }

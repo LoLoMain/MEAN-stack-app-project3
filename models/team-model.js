@@ -10,7 +10,8 @@ const teamSchema = new Schema({
     userIds:
       [ { type: Schema.Types.ObjectId}],
     teamPoints: {
-      type: Number
+      type: Number,
+      default: 0
     }
     },
  {
