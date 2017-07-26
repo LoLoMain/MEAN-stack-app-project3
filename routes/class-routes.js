@@ -7,7 +7,7 @@ const TeamModel = require ('../models/team-model');
 const UserModel = require('../models/user-model');
 
 
-// PATCH add Points to a CLASS (individual)
+// PUT add Points to a CLASS (individual)
 router.put('/api/classpoints/:id', (req, res, next)=>{
  if(!req.user){
    res.status(401).json({ message: 'You MUST log in to add points to your class.'});
@@ -38,8 +38,8 @@ router.put('/api/classpoints/:id', (req, res, next)=>{
 
 
 
-//PATCH  update TEAM total Points
-router.patch('/api/teampoints/:id',(req, res, next)=>{
+//PUT  update TEAM total Points
+router.put('/api/teampoints/:id',(req, res, next)=>{
   if(!req.user){
     res.status(401).json({ message: 'Log in to add points to your team please'});
     return;
