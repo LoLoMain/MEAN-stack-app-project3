@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5977b651b61eb6dd3149c58f"},"updatedAt":{"$date":"2017-07-25T21:21:21.359Z"},"createdAt":{"$date":"2017-07-25T21:21:21.359Z"},"teamName":"Panthers","userIds":[{"$oid":"5977b45194d895d90a91b1e2"},{"$oid":"5977b4fd94d895d90a91b1e4"}],"__v":0}
+{"_id":{"$oid":"5977b651b61eb6dd3149c590"},"updatedAt":{"$date":"2017-07-25T21:21:21.367Z"},"createdAt":{"$date":"2017-07-25T21:21:21.367Z"},"teamName":"Jaguars","userIds":[{"$oid":"5977b4ad94d895d90a91b1e3"},{"$oid":"5977b52394d895d90a91b1e5"}],"__v":0}
