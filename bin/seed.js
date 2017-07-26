@@ -82,52 +82,51 @@ const UserModel = require('../models/user-model.js');
 //NEW TEAMS!
 const TeamModel = require('../models/team-model.js');
 var idArray = [];
-// Team Seed Info ------------------------
-// UserModel.find((err, results) => {
-//   results.forEach((teachers)=> {
-//     idArray.push(teachers._id);
-//   });
-//   const teamListArray = [
-//     {teamName: 'Panthers',
-//      userIds: []},
-//     {teamName: 'Jaguars',
-//      userIds: []}
-//   ];
-//   //create team objects
-//   var count = 0;
-//   var index = 0;
-//
-//     idArray.forEach((id) => {
-//
-//       teamListArray[index].userIds.push(id);
-//
-//       count += 1;
-//       index += 1;
-//       if ( count % 2 === 0){
-//         index = 0;
-//       }
-//
-//     });
-  //populate team objects with teacher ids
+Team Seed Info ------------------------
+UserModel.find((err, results) => {
+  results.forEach((teachers)=> {
+    idArray.push(teachers._id);
+  });
+  const teamListArray = [
+    {teamName: 'Panthers',
+     userIds: []},
+    {teamName: 'Jaguars',
+     userIds: []}
+  ];
+  //create team objects
+  var count = 0;
+  var index = 0;
+
+    idArray.forEach((id) => {
+
+      teamListArray[index].userIds.push(id);
+
+      count += 1;
+      index += 1;
+      if ( count % 2 === 0){
+        index = 0;
+      }
+
+    });
+//  populate team objects with teacher ids
 
 
-//   TeamModel.create(
-//     teamListArray,          //1st Argument -> array of team info objects
-//     (err, teamResults) =>{  //2nd Argument -> callback!
-//       if (err){
-//         console.log('No stuff for you! DataBase Error.');
-//         return;  //early return
-//       }
-//
-//       teamResults.forEach((team)=>{
-//         console.log('New Team!!!! ' + team.teamName);
-//         });
-//     }
-//   );
-// });
+  TeamModel.create(
+    teamListArray,          //1st Argument -> array of team info objects
+    (err, teamResults) =>{  //2nd Argument -> callback!
+      if (err){
+        console.log('No stuff for you! DataBase Error.');
+        return;  //early return
+      }
+
+      teamResults.forEach((team)=>{
+        console.log('New Team!!!! ' + team.teamName);
+        });
+    }
+  );
+});
 //find and get all ids and store in array
-
-// create and save new instances of teams
+//create and save new instances of teams
 
 const ClassModel = require('../models/class-model.js');
 
@@ -175,8 +174,6 @@ const classListArray =
    name: 'Barbara Waters',
    picture: 'https://cdn3.iconfinder.com/data/icons/avatars-with-different-clothes-and-hairstyles/512/Avatar_female_person_user_woman_girl_ponytail_shirt_icon-512.png'
   }
-
-
    ],
 
   }

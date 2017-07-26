@@ -61,7 +61,6 @@ app.use((req,res,next)=>{
   next();
 });
 
-//cors middlewares needed
 
 // END MIDDLEWARES ----------------------------------------------------
 
@@ -78,9 +77,13 @@ app.use('/', postRoutes);
 const classRoutes = require('./routes/class-routes');
 app.use('/', classRoutes);
 
-
-
 //END ROUTES ----------------------------------------------------------
+
+
+//If no routes match, send to Angular HTML
+app.use((req,res,next)=>{
+  res.sendFile(__dirname + '/public/index.html');
+});
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {

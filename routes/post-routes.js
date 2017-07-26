@@ -41,8 +41,7 @@ router.post('/api/posts',
     //validation error
     if(err && newPost.errors) {
       res.status(400).json({
-        contentErr: newPost.errors.content,
-        photoUrlErr: newPost.errors.photoUrl
+        contentErr: newPost.errors.content
       });
       return;
     }
@@ -69,7 +68,7 @@ router.get('/api/posts', (req, res, next)=>{
 // add teamId projection?
   PostModel
   .find()
-  .populate('Post', {encryptedPassword: 0}) // retreive all the info of the owners(except encryptedPassword), possible due to the 'ref' in the camel model
+  .populate('Post', {encryptedPassword: 0}) // retreive all the info of the owners(except encryptedPassword)
 
   .exec((err, postList)=>{
     if (err){
