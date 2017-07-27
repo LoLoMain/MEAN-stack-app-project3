@@ -4,6 +4,7 @@ const multer  = require('multer');
 const router  = express.Router();
 
 const PostModel = require ('../models/post-model');
+const ClassModel = require ('../models/class-model');
 
 const uploader = multer({
   dest: __dirname + '/../public/uploads/'
@@ -78,6 +79,29 @@ router.get('/api/posts', (req, res, next)=>{
     res.status(200).json(postList);
   });
 }); // close router.get
+
+// GET Show ALL POINTS
+router.get('/api/classpoints/:id', (req, res, next)=>{
+  if(!req.user){
+    res.status(401).json({ message: 'Log in to view posts please'});
+    return;
+  }
+  const classId = req.params.id;
+  ClassModel
+  .findOneById(classId)
+  .populate('Class') // retreive all the info of the Class
+
+  .exec((err, pointsList)=>{
+    if (err){
+      res.status(500).json({ message: 'Unable to find Points'});
+      return;
+    }
+    res.status(200).json(pointsList);
+  });
+}); // close router.get
+
+
+
 
 
 //POST Add Likes to a single post
