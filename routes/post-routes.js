@@ -13,10 +13,6 @@ const uploader = multer({
 
 
 // POST Create New Post
-// *need to add team ID for posts??
-// *criteria object would be needed to find all of the posts that belong to a certain team, search by team ID
-
-                                             //name from New Post Form
 router.post('/api/posts',
   uploader.single('file'),
   (req, res, next)=>{
@@ -26,7 +22,8 @@ router.post('/api/posts',
 
   const newPost = new PostModel({
     content: req.body.postContent,
-    ownerId: req.user._id
+    ownerId: req.user._id,
+    teamId: req.user.team
   });
 
   //Add photo if file is uploaded
@@ -58,7 +55,6 @@ router.post('/api/posts',
 });
 //-------------------------------------------
 
-
 // GET Show ALL Posts
 router.get('/api/posts', (req, res, next)=>{
   if(!req.user){
@@ -66,9 +62,8 @@ router.get('/api/posts', (req, res, next)=>{
     return;
   }
 
-// add teamId projection?
   PostModel
-  .find()
+  .find({teamId: req.user.team})
   .populate('Post', {encryptedPassword: 0}) // retreive all the info of the owners(except encryptedPassword)
 
   .exec((err, postList)=>{
@@ -78,7 +73,9 @@ router.get('/api/posts', (req, res, next)=>{
     }
     res.status(200).json(postList);
   });
-}); // close router.get
+}); // close SHOW ALL posts
+
+//---------------------------------------------------------------------
 
 // GET Show ALL POINTS
 router.get('/api/classpoints/:id', (req, res, next)=>{
@@ -100,8 +97,7 @@ router.get('/api/classpoints/:id', (req, res, next)=>{
   });
 }); // close router.get
 
-
-
+//----------------------------------------------------------------
 
 
 //POST Add Likes to a single post
@@ -110,18 +106,14 @@ router.patch('/api/updatepost/:id',(req, res, next)=>{
     res.status(401).json({ message: 'Log in to view posts please'});
     return;
   }
-const postId = req.params.id;
-const updates = { likes: req.body.likes };
-console.log(req.body.likes);
+  const postId = req.params.id;
+  const updates = { likes: req.body.likes };
 
   PostModel.findByIdAndUpdate(postId, updates, (err, result) => {
     if (err){ return next(err); }
-
     res.status(200).json(result);
-
   });
-
-
+  
 });
 
 

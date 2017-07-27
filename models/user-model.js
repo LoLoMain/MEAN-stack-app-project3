@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 
 const ClassModel = require ('./class-model.js');
+const TeamModel = require ('./team-model.js');
 
 
 const Schema = mongoose.Schema;

@@ -36,20 +36,3 @@ const ClassModel= mongoose.model('Class', classSchema);
 // DO NOT FORGET THIS - GAME OVER  😵
 module.exports = ClassModel;
 // Connects the  model above to the routes file
-
-
-// name: 'Jerrold Larocca'
-// name:'Stephaine Murawski'
-// name:'Junie Manges'
-// name:'Mendy Holmquist'
-// name:'Lieselotte Gettinger'
-// name:'Coralie Wenrich'
-// name:'Terisa Hofer'
-//
-// name:'Shalon Constable'
-// name:'Celestina Kohr'
-// name:'Leah Tiernan'
-// name:'Kanesha Simonsen'
-// name:'Regena Rendell'
-// name:'Craig Flanary'
-// name:'Rebecca Echavarria'

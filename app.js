@@ -61,8 +61,8 @@ app.use((req,res,next)=>{
   next();
 });
 
-
 // END MIDDLEWARES ----------------------------------------------------
+
 
 // ROUTES ------------------------------------------------------------
 const index = require('./routes/index');
@@ -76,6 +76,9 @@ app.use('/', postRoutes);
 
 const classRoutes = require('./routes/class-routes');
 app.use('/', classRoutes);
+
+const teamRoutes = require('./routes/team-routes');
+app.use('/', teamRoutes);
 
 //END ROUTES ----------------------------------------------------------
 

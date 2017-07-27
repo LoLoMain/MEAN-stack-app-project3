@@ -55,7 +55,6 @@ router.post('/api/signup', (req,res,next)=>{
 
               //Remove encryptedPassword before sending
               //(not removing from DB - just the object)
-
               theUser.encryptedPassword = undefined;
 
               //Send User Info to FrontEnd

@@ -18,7 +18,11 @@ const postSchema = new Schema({
     likes:{
       type: Number,
       default: 0
-    }
+    },
+    teamId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Team'
+    },
  },
  {
   timestamps: true
